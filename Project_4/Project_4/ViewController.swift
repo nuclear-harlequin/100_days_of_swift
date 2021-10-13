@@ -38,7 +38,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         toolbarItems = [progressButton, spacer, back, next, refresh]
         navigationController?.isToolbarHidden = false
-        
+
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
         let url = URL(string: "https://" + selectedWebsite!)!
@@ -80,6 +80,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         if let host = url?.host {
             for website in websites {
+                
+                // print("\(host) contains \(website): \(host.contains(website))")
+                
                 if host.contains(website) {
                     decisionHandler(.allow)
                     return
@@ -88,5 +91,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         }
         
         decisionHandler(.cancel)
+/*
+        let ac = UIAlertController(title: nil, message: "The website you are trying to visit is not allowed", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        present(ac, animated: true)
+ */
     }
 }

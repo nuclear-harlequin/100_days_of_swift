@@ -14,7 +14,6 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Select a website:"
-        navigationController?.navigationBar.prefersLargeTitles = true
         
     }
 
