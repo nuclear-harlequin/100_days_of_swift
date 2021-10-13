@@ -12,6 +12,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     //the ViewController class extendss from UIViewController and conforms to WKNavigationDelegate protocol
     var webView: WKWebView!
     var progressView: UIProgressView!
+    var selectedWebsite: String?
     var websites = ["smithsonianmag.com", "bigthink.com", "theonion.com", "oddee.com", "apartmenttherapy.com", "coolthings.com"]
     
     override func loadView() {
@@ -40,7 +41,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
-        let url = URL(string: "https://" + websites[0])!
+        let url = URL(string: "https://" + selectedWebsite!)!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
